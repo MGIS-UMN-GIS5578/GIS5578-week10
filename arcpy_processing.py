@@ -5,8 +5,7 @@
 # --------------------
 
 import arcpy
-import csv
-
+import csv, os
 
 def AddXYToShapefile(inFC, geomProperty, coordinateSystem):
     """
@@ -70,12 +69,12 @@ def BufferPointLayer(inFC, outShapeFilePath, bufferDistance):
 myDirectory = r"C:\git\GIS5578_fall_2018\GIS5578-week10"
 arcpy.env.workspace = myDirectory
 
-polygonShapePath = r"%s\%s" % (myDirectory, "MSP_Communities_ACS.shp")
-bufferShapePath = r"%s\%s" % (myDirectory, "buffer.shp")
+polygonShapePath = os.path.join(myDirectory, "MSP_Communities_ACS.shp")
+bufferShapePath = os.path.join(myDirectory, "buffer.shp")
 
 pointLayerName = "cities"
-pointCSVPath = r"%s\%s" % (myDirectory, '%s.csv' % (pointLayerName,))
-pointShapePath = r"%s\%s" % (myDirectory, '%s.shp' % (pointLayerName,))
+pointCSVPath = os.path.join(myDirectory, '%s.csv'.format(pointLayerName,))
+pointShapePath = os.path.join(myDirectory, '%s.shp'.format(pointLayerName,))
 
 wgsCoordinateSystem = """GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]"""
 CSVFields = ["FID", "INSIDE_X", "INSIDE_Y"]

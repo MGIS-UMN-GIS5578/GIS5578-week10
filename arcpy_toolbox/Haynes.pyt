@@ -9,6 +9,7 @@ class Toolbox(object):
         self.alias = "Haynes"
 
         # List of tool classes associated with this toolbox
+        #self.tools must return a list
         self.tools = [HaynesTool]
 
 
@@ -39,7 +40,7 @@ class HaynesTool(object):
         #Must return a List object 
         #The order of the returned list affects the order of the boxes as they are displayed
         return[param1, param2, param4, param3 ]
-        return[param1,param4 ]
+        #return[param1,param4 ]
 
     def isLicensed(self):
         """Set whether tool is licensed to execute."""
